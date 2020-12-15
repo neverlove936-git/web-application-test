@@ -4,6 +4,12 @@
     <title>My Great Application</title>
  <meta charset="utf-8" />
     <script>
+         window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+             // call flutter handler with name 'mySum' and pass one or more arguments
+             window.flutter_inappwebview.callHandler('mySum', 12, 2, 50).then(function(result) {
+               // get result from Flutter side. It will be the number 64.
+               console.log(result);
+         });
         // Set up broadcast channel
         const bc=new window.BroadcastChannel('sample_channel');
         
