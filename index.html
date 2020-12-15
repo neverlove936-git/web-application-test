@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Great Application</title>
+ <meta charset="utf-8" />
+    <script>
+        // Set up broadcast channel
+        const bc=new window.BroadcastChannel('sample_channel');
+        
+        function doAction(){
+            // Action that will be done on current and other pages
+            // The message will be broadcast to all tabs
+            // it will also be displayed on the current
+            // page using a setMsg function since the
+            // source of the postMessage does not receieve
+            // the message.
+// Random action: answer or call
+            let ran=Math.floor(Math.random() * 2);
+          
+            let msg={};
+if (Number(ran)===0){
+                msg={action: 'answer',
+                phone: '555-1212'
+                }
+            }else{
+                msg={action: 'call',
+                phone: '444-2233'
+                }
+            }
+           
+            // broadcast message to others tabs
+            bc.postMessage(msg);
+            
+            // show message on this page since 
+            // it will not be received from 
+            // page that initiated postMessage
+            setMsg(msg);
+        }
+        
+        // Handler for accepting messages that are broadcast
+        bc.onmessage=(message)=>{
+        
+            let txt = document.querySelector('#txtmsg');
+            if (message.data.action==='answer'){
+               txt.value=`Answer ${message.data.phone}`;
+            }else{
+                txt.value=`Call ${message.data.phone}`;
+            }
+           
+        }
+// function to handle messages for page that
+        // initiated postMessage
+        function setMsg(msg){
+            let txt = document.querySelector('#txtmsg');
+            if (msg.action==='answer'){
+               txt.value=`Answer ${msg.phone}`;
+            }else{
+                txt.value=`Call ${msg.phone}`;
+            }
+        }
+        
+        </script>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <input type='button' id='btnstart' value='Start Action' onclick='doAction();' />
+           Message: <input type='text' id='txtmsg' /> 
+        </fieldset>
+    </form>
+</body>
+</html>
