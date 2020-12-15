@@ -8,16 +8,8 @@
         <h1>JavaScript Handlers (Channels) TEST</h1>
         <script>
             window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
-                window.flutter_inappwebview.callHandler('handlerFoo')
-                  .then(function(result) {
-                    // print to the console the data coming
-                    // from the Flutter side.
-                    console.log(JSON.stringify(result));
-                    
-                    window.flutter_inappwebview
-                      .callHandler('handlerFooWithArgs', 1, true, ['bar', 5], {foo: 'baz'}, result);
+              window.flutter_inappwebview.callHandler('handlerFooWithArgs', 1, true, ['bar', 5], {foo: 'baz'});
                 });
-            });
         </script>
     </body>
 </html>
