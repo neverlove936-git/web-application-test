@@ -11,7 +11,7 @@
            // properly, you need to wait and listen the JavaScript event flutterInAppWebViewPlatformReady. 
            // This event will be dispatched as soon as the platform (Android or iOS) is ready to handle the callHandler method. 
             window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
-              window.flutter_inappwebview.callHandler('handlerFooWithArgs', 'Hello Flutter App');
+              window.flutter_inappwebview.callHandler('sendMessage', 'Hello Flutter App');
             });
         </script>
     </body>
