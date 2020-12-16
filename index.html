@@ -7,9 +7,10 @@
     <body>
         <h1>JavaScript Handlers (Channels) TEST</h1>
         <script>
-            input = document.getElementById("lname");
             window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+              // Send data to Native
               window.flutter_inappwebview.callHandler('sendMessage', 'Hello Flutter app', true, ['bar', 5], {foo: 'baz'});
+              // Get data from Native
               window.flutter_inappwebview.callHandler('getMessage').then(function(result) {
                   console.log(JSON.stringify(result));
                 document.getElementById('lname').setAttribute('value', result);
