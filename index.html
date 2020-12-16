@@ -9,8 +9,9 @@
         <script>
             input = document.getElementById('lname');
             window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
-              window.flutter_inappwebview.callHandler('sendMessage', 1, true, ['bar', 5], {foo: 'baz'});
+              window.flutter_inappwebview.callHandler('sendMessage', 'Hello Flutter app', true, ['bar', 5], {foo: 'baz'});
               window.flutter_inappwebview.callHandler('getMessage').then(function(result) {
+                  console.log(JSON.stringify(result));
                 input.value = result;
               });
             });
