@@ -12,7 +12,7 @@
               window.flutter_inappwebview.callHandler('sendMessage', 'Hello Flutter app', true, ['bar', 5], {foo: 'baz'});
               window.flutter_inappwebview.callHandler('getMessage').then(function(result) {
                   console.log(JSON.stringify(result));
-                input.value = JSON.stringify(result);
+                input.text = JSON.stringify(result);
               });
             });
         </script>
