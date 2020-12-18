@@ -9,10 +9,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+ <script src="./function.js"></script>
 <script>
   function redirect() {
-    var url = "./success.html";
-    window.open(url, "_self");
+//    var url = "./success.html";
+//    window.open(url, "_self");
+    sendData('token test', 'refreshToken test');
     return false;
   }
 </script>
