@@ -3,11 +3,12 @@
  * @param {string} refreshToken
  */
 function sendData(accessToken, refreshToken) {
-  console.log(accessToken);
-  console.log(refreshToken);
+  // In order to call window.flutter_inappwebview.callHandler(handlerName <String>, ...args)
+  // properly, you need to wait and listen the JavaScript event flutterInAppWebViewPlatformReady.
+  // This event will be dispatched as soon as the platform (Android or iOS) is ready to handle the callHandler method.
   window.addEventListener('flutterInAppWebViewPlatformReady', function (_) {
     // Send token and refresh token to Native App
-    window.flutter_inappwebview.callHandler('sendMessage', {
+    window.flutter_inappwebview.callHandler('sendMessageToApp', {
       accessToken: accessToken,
       refreshToken: refreshToken,
     });
